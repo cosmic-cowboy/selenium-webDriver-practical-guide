@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Selectable</title>
+	<style>
+		#selectable li {
+			display: block;
+			float : left;
+			font-size: 4em;
+			height: 80px;
+			text-align: center;
+			width: 100px;
+		}
+		.ui-state-default, 
+		.ui-widget-content .ui-state-default,
+		.ui-widget-header .ui-state-default,{
+			border : 1px solid #D3D3D3;
+			color: #555555;
+			font-weight: normal;
+		}
+	</style>
+</head>
+<body>
+	<ol id="selectable" class="ui-selectable">
+		<li class="ui-state-default ui-selectee" name="one">1</li>
+		<li class="ui-state-default ui-selectee" name="two">2</li>
+		<li class="ui-state-default ui-selectee" name="three">3</li>
+		<li class="ui-state-default ui-selectee" name="four">4</li>
+		<li class="ui-state-default ui-selectee" name="five">5</li>
+		<li class="ui-state-default ui-selectee" name="six">6</li>
+		<li class="ui-state-default ui-selectee" name="seven">7</li>
+		<li class="ui-state-default ui-selectee" name="eight">8</li>
+		<li class="ui-state-default ui-selectee" name="nine">9</li>
+		<li class="ui-state-default ui-selectee" name="ten">10</li>
+		<li class="ui-state-default ui-selectee" name="eleven">11</li>
+		<li class="ui-state-default ui-selectee" name="twelve">12</li>
+	</ol>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-git2.min.js"></script>
+	<script type="text/javascript">
+		$(".ui-selectee").click(function (event) {
+			if(event.ctrlKey){
+				$(this).css("color","red");
+			} else {
+				$(this).css("color","blue");
+			}
+		});
+	</script>
+</body>
+</html>
