@@ -6,7 +6,6 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
 
 import com.slgerkamp.selenium.lib.Utils;
@@ -29,11 +28,9 @@ public class ActionBuildPerform {
 			.click(three)
 			.click(five)
 			.keyUp(Keys.CONTROL);
-		
-		// アクションのビルド
-		Action compositeAction = builder.build();
 
 		// アクションの実行
-		compositeAction.perform();
+		// ビルドはperformが内部的に実行する
+		builder.perform();
 	}
 }
