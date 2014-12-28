@@ -9,21 +9,22 @@ import org.openqa.selenium.support.events.WebDriverEventListener;
 public class ImplementsEventListener implements WebDriverEventListener{
 
 	@Override
-	public void afterChangeValueOf(WebElement arg0, WebDriver arg1) {
-		// TODO 自動生成されたメソッド・スタブ
-		
+	public void afterChangeValueOf(WebElement element, WebDriver driver) {
+		System.out.println("ImplementsEventListener: after change value " + element
+	               +driver.getCurrentUrl());
 	}
 
 	@Override
-	public void afterClickOn(WebElement arg0, WebDriver arg1) {
-		// TODO 自動生成されたメソッド・スタブ
-		
+	public void afterClickOn(WebElement element, WebDriver driver) {
+		System.out.println("ImplementsEventListener: after click element " + element
+	               +driver.getCurrentUrl());
 	}
 
 	@Override
-	public void afterFindBy(By arg0, WebElement arg1, WebDriver arg2) {
-		// TODO 自動生成されたメソッド・スタブ
-		
+	public void afterFindBy(By by, WebElement element, WebDriver driver) {
+		System.out.println("ImplementsEventListener: after find element " + element
+				+ ", by " + by
+	            + driver.getCurrentUrl());
 	}
 
 	@Override
@@ -34,9 +35,9 @@ public class ImplementsEventListener implements WebDriverEventListener{
 	}
 
 	@Override
-	public void afterNavigateForward(WebDriver arg0) {
-		// TODO 自動生成されたメソッド・スタブ
-		
+	public void afterNavigateForward(WebDriver driver) {
+		System.out.println("ImplementsEventListener: After Navigate Forward. Right now I'm at "
+	               +driver.getCurrentUrl());
 	}
 
 	@Override
@@ -46,28 +47,30 @@ public class ImplementsEventListener implements WebDriverEventListener{
 	}
 
 	@Override
-	public void afterScript(String arg0, WebDriver arg1) {
-		// TODO 自動生成されたメソッド・スタブ
-		
+	public void afterScript(String script, WebDriver driver) {
+		System.out.println("ImplementsEventListener: After script " + script
+	               +driver.getCurrentUrl());
 	}
 
 	@Override
-	public void beforeChangeValueOf(WebElement arg0, WebDriver arg1) {
-		// TODO 自動生成されたメソッド・スタブ
-		
+	public void beforeChangeValueOf(WebElement element, WebDriver driver) {
+		System.out.println("ImplementsEventListener: before change value " + element
+	               +driver.getCurrentUrl());
 	}
 
 	@Override
-	public void beforeClickOn(WebElement arg0, WebDriver arg1) {
-		// TODO 自動生成されたメソッド・スタブ
-		
+	public void beforeClickOn(WebElement element, WebDriver driver) {
+		System.out.println("ImplementsEventListener: before click element " + element
+	               +driver.getCurrentUrl());
 	}
 
 	@Override
-	public void beforeFindBy(By arg0, WebElement arg1, WebDriver arg2) {
-		// TODO 自動生成されたメソッド・スタブ
-		
+	public void beforeFindBy(By by, WebElement element, WebDriver driver) {
+		System.out.println("ImplementsEventListener: before find element " + element
+				+ ", by " + by
+	            + driver.getCurrentUrl());
 	}
+
 
 	@Override
 	public void beforeNavigateBack(WebDriver driver) {
@@ -76,9 +79,9 @@ public class ImplementsEventListener implements WebDriverEventListener{
 	}
 
 	@Override
-	public void beforeNavigateForward(WebDriver arg0) {
-		// TODO 自動生成されたメソッド・スタブ
-		
+	public void beforeNavigateForward(WebDriver driver) {
+		System.out.println("ImplementsEventListener: Before Navigate Forward. Right now I'm at "
+	               +driver.getCurrentUrl());		
 	}
 
 	@Override
@@ -88,15 +91,15 @@ public class ImplementsEventListener implements WebDriverEventListener{
 	}
 
 	@Override
-	public void beforeScript(String arg0, WebDriver arg1) {
-		// TODO 自動生成されたメソッド・スタブ
-		
+	public void beforeScript(String script, WebDriver driver) {
+		System.out.println("ImplementsEventListener: before script " + script
+	               +driver.getCurrentUrl());
 	}
 
 	@Override
-	public void onException(Throwable arg0, WebDriver arg1) {
-		// TODO 自動生成されたメソッド・スタブ
-		
+	public void onException(Throwable err, WebDriver driver) {
+		System.out.println("ImplementsEventListener: Error " + err
+	               +driver.getCurrentUrl());
 	}
 
 }
