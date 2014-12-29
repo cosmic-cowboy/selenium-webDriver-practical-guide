@@ -6,6 +6,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 import com.slgerkamp.selenium.lib.Utils;
 
@@ -41,25 +42,10 @@ public class AdminAllPostsPage {
 	 * @param titleStr
 	 * @param description
 	 */
-	public void createNewPost(String titleStr, String description){
+	public void createNewPost(String title, String description){
 		driver.findElement(By.linkText("新規追加")).click();
-		// 新しいタイトルを追加
-		WebElement title = driver.findElement(By.id("title"));
-		title.click();
-		title.sendKeys(titleStr);
-		// 新しい内容を追加
-		WebElement contentArea = driver.findElement(By.id("content_ifr"));
-		driver.switchTo().frame(contentArea); 
-		WebElement content = driver.findElement(By.id("tinymce"));
-		content.click();
-		content.sendKeys(description);
-
-		// トップレベルに戻る
-		driver.switchTo().defaultContent();
-
-		// ポストを公開
-		driver.findElement(By.id("publish")).click();
-		
+		AdminNewPostPage adminNewPostPage = PageFactory.initElements(driver, AdminNewPostPage.class);
+		adminNewPostPage.addNewPost(title, description);
 	}
 
 	public void editPost(String title){
