@@ -5,6 +5,7 @@ import java.util.List;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
@@ -48,7 +49,21 @@ public class AdminAllPostsPage {
 		adminNewPostPage.addNewPost(title, description);
 	}
 
-	public void editPost(String title){
+	public void editPost(String presentTitle, String newTitle, String newDescription){
+		List<WebElement> allPosts = postsContainer.findElements(By.className("row-title"));
+		for(WebElement element : allPosts){
+			if(element.getText().equals(presentTitle)){
+				Actions builder = new Actions(driver);
+				builder.moveToElement(element);
+				builder.click(driver.findElement(By.cssSelector(".edit>a")));
+				builder.perform();
+				break;
+			}
+		}
+		// 本来は編集画面を作成したほうが良いが、
+		// 作成ページで代用ができてしまったので、今回は省略
+		AdminNewPostPage editPage = PageFactory.initElements(driver, AdminNewPostPage.class);
+		editPage.addNewPost(newTitle, newDescription);
 		
 	}
 	
@@ -65,7 +80,7 @@ public class AdminAllPostsPage {
 
 	
 	public void deletePost(String title){
-		
+
 	}
 	
 	public void filterPostsByCategory(String category){
