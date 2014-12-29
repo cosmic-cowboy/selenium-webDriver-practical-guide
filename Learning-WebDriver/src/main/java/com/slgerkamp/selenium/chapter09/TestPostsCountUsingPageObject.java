@@ -1,28 +1,23 @@
 package com.slgerkamp.selenium.chapter09;
 
-import java.util.Date;
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.PageFactory;
 
 import com.slgerkamp.selenium.lib.Utils;
 
-public class TestAddNewPostUsingPageObject {
+public class TestPostsCountUsingPageObject {
 	public static void main(String[] args) {
-		String timestamp = new Date().toString();
 		WebDriver driver = new FirefoxDriver();
-
-		// wordpressの管理画面にアクセス
-		AdminLoginPage adminLoginPage = PageFactory.initElements(driver, AdminLoginPage.class);
+		
 		// 管理画面にログイン
+		AdminLoginPage adminLoginPage = PageFactory.initElements(driver, AdminLoginPage.class);
 		adminLoginPage.login(
 				Utils.getProperty("wordpressAdminId"), 
 				Utils.getProperty("wordpressAdminPass"));
-		
-		// 投稿一覧画面にアクセス
+
+		// 投稿一覧画面に移動し、投稿数をカウントする
 		AdminAllPostsPage adminAllPostsPage = PageFactory.initElements(driver, AdminAllPostsPage.class);
-		// 新しいポストを追加
-		adminAllPostsPage.createNewPost("タイトル" + timestamp, "内容" + timestamp);
+		System.out.println("投稿数：" + adminAllPostsPage.getAllPostsCount());
 	}
 }

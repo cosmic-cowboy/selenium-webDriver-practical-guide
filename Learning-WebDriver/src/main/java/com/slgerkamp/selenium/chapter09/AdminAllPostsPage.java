@@ -1,5 +1,7 @@
 package com.slgerkamp.selenium.chapter09;
 
+import java.util.List;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -20,6 +22,12 @@ public class AdminAllPostsPage {
 	@FindBy(id="cat")
 	WebElement viewByCategories;
 
+	@FindBy(css="#the-list .row-title")
+	WebElement latestPost;
+
+	@FindBy(css="#the-list tr")
+	List<WebElement> postList;
+	
 	private final String pageUrl = Utils.getProperty("wordpressUrl") + "wp-admin/edit.php";
 
 	
@@ -28,6 +36,11 @@ public class AdminAllPostsPage {
 		driver.get(pageUrl);
 	}
 	
+	/**
+	 * 新しい投稿をする
+	 * @param titleStr
+	 * @param description
+	 */
 	public void createNewPost(String titleStr, String description){
 		driver.findElement(By.linkText("新規追加")).click();
 		// 新しいタイトルを追加
@@ -52,7 +65,19 @@ public class AdminAllPostsPage {
 	public void editPost(String title){
 		
 	}
+	
+	/**
+	 * 最新の投稿を削除する
+	 */
+	public void deleteLatestPost(){
+		// 削除対象の投稿編集画面に移動
+		latestPost.click();
+		// 投稿をゴミ箱に移動
+		WebElement deleteButton = driver.findElement(By.cssSelector("#delete-action>.submitdelete"));
+		deleteButton.click();
+	}
 
+	
 	public void deletePost(String title){
 		
 	}
@@ -65,5 +90,8 @@ public class AdminAllPostsPage {
 		
 	}
 
+	public int getAllPostsCount(){
+		return postList.size();
+	}
 
 }
