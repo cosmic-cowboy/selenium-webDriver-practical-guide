@@ -1,16 +1,20 @@
 package com.slgerkamp.selenium.chapter09;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.How;
 
 import com.slgerkamp.selenium.lib.Utils;
 
 public class AdminLoginPage {
 
 	WebDriver driver;
+	@FindBy(id="user_login")
 	WebElement email;
+	@FindBy(id="user_pass")
 	WebElement pass;
+	@FindBy(how=How.ID, using="wp-submit")
 	WebElement submit;
 	private final String pageUrl = Utils.getProperty("wordpressUrl") + "wp-admin";
 	
@@ -22,9 +26,6 @@ public class AdminLoginPage {
 	public AdminLoginPage(WebDriver driver){
 		this.driver = driver;
 		driver.get(pageUrl);
-		email  = driver.findElement(By.id("user_login"));
-		pass   = driver.findElement(By.id("user_pass"));
-		submit = driver.findElement(By.id("wp-submit"));
 	}
 	
 	/**

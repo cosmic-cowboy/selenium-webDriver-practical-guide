@@ -6,6 +6,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.PageFactory;
 
 import com.slgerkamp.selenium.lib.Utils;
 
@@ -15,7 +16,7 @@ public class TestAddNewPostUsingPageObject {
 		WebDriver driver = new FirefoxDriver();
 
 		// wordpressの管理画面にアクセス
-		AdminLoginPage adminLoginPage = new AdminLoginPage(driver);
+		AdminLoginPage adminLoginPage = PageFactory.initElements(driver, AdminLoginPage.class);
 		// 管理画面にログイン
 		adminLoginPage.login(
 				Utils.getProperty("wordpressAdminId"), 
